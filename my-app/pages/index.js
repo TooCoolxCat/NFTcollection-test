@@ -115,28 +115,6 @@ export default function Home() {
       }
     };
 
-    //getOwner: call the contract to retrieve the owner
-    const getOwner = async () => {
-      try {
-        const signer = await getProviderOrSigner(true);
-
-        const nftContract = new Contract(
-          NFT_CONTRACT_ADDRESS,
-          abi,
-          signer
-        ); 
-
-        // Get the address associated to the signer which is connected to  MetaMask
-        const _owner = await nftContract.owner();
-        const userAddress = await signer.getAddress();
-
-        if (userAddress.toLowerCase() === _owner.toLowerCase()) {
-          setIsOwner(true);
-        }
-      } catch (err) {
-        console.error(err.message);
-      }
-    }
    
     const checkIfPresaleStarted = async () => {
       try {   
@@ -159,6 +137,7 @@ export default function Home() {
         return _presaleStarted;
       } catch (err) {
         console.error(err);
+        return false
       }
     };
 
@@ -195,6 +174,30 @@ export default function Home() {
       }
     };
   
+     //getOwner: call the contract to retrieve the owner
+     const getOwner = async () => {
+      try {
+        const signer = await getProviderOrSigner(true);
+
+        const nftContract = new Contract(
+          NFT_CONTRACT_ADDRESS,
+          abi,
+          signer
+        ); 
+
+        // Get the address associated to the signer which is connected to  MetaMask
+        const _owner = await nftContract.owner();
+        const userAddress = await signer.getAddress();
+
+        if (userAddress.toLowerCase() === _owner.toLowerCase()) {
+          setIsOwner(true);
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+   
+
     //getTokensMinted: get the number of tokenIds that have been minted
     const getTokensMinted = async () => {
       try {
@@ -301,6 +304,20 @@ export default function Home() {
 
     if (presaleStarted && !presaleEnded) {
       return (
+        <div>
+            <div className={styles.description}>
+              Preasel has started, if you are on fashionlist, mint
+            </div> 
+            <button onClick={publicMint} className={styles.button}>
+             Presale Mint
+            </button>
+        </div>
+      );
+    }
+
+    
+    if (presaleStarted && presaleEnded) {
+      return (
        <button onClick={publicMint} className={styles.button}>
         public Mint
        </button>
@@ -317,6 +334,7 @@ export default function Home() {
           <div className={styles.description}>
             {tokenIdsMinted}/20 have been minted
           </div>
+          {renderButton()}
         </div>
 
       <footer className={styles.footer}>
