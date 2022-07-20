@@ -296,7 +296,7 @@ export default function Home() {
       return (
         <div> 
           <div className={styles.description}>
-            Presale hasn't started yet!
+            Presale has not started yet!
           </div>
         </div>
       );
