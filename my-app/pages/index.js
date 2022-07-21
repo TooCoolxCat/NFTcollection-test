@@ -157,7 +157,7 @@ export default function Home() {
         //return a timestamp in seconds
         const presaleEndTime = await nftContract.presaleEnded();
 
-        const currentTimeInSeconds = Date.now() / 1000;
+        const currentTimeInSeconds = Date.now() / 5000;
         const hasPresaleEnded = presaleEndTime.lt(
           Math.floor(currentTimeInSeconds));
         
