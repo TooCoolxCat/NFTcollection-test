@@ -5,7 +5,7 @@ export default function handler(req, res) {
   // const image_url =
   //   "https://ipfs.io/ipfs/QmNU12GQ59rnZkdpkZHt7DoFFQv76rkGSPSYRLxWinSkaU";
   const image_url =
-  "https://ipfs.io/ipfs/QmNU12GQ59rnZkdpkZHt7DoFFQv76rkGSPSYRLxWinSkaU/";
+  "https://ipfs.io/ipfs/QmT3uB3vYEozi5aNam77yFifN8TPGQRud7saCoYL3DoZSa/";
   
   // The api is sending back metadata for a Crypto Dev
   // To make our collection compatible with Opensea, we need to follow some Metadata standards

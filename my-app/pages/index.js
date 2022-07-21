@@ -66,7 +66,7 @@ export default function Home() {
       const tx = await whitelistContract.mint({
         //set the value of the nft
         //using utils library from ethers.js
-        value: utils.parseEther("0.03"),
+        value: utils.parseEther("0.00"),
       });
       setLoading(true);
       //wait for transaction to be mined
