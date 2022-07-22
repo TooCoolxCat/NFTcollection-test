@@ -199,7 +199,7 @@ export default function Home() {
    
 
     //getTokensMinted: get the number of tokenIds that have been minted
-    const getTokensMinted = async () => {
+    const getTokenIdsMinted = async () => {
       try {
       
         const provider = await getProviderOrSigner();
@@ -249,7 +249,7 @@ export default function Home() {
         if (_presaleStarted){
           checkIfPresaleEnded();
         }
-       getTokensMinted();
+       getTokenIdsMinted();
 
     //set an interval which gets called every 5 secs
     const presaleEndedInterval = setInterval(async function() {
@@ -265,7 +265,7 @@ export default function Home() {
 
   //set a n interval to check token ids minted every 5 secs
     setInterval( async function() {
-      await getTokensMinted();
+      await getTokenIdsMinted();
     }, 5*1000);
    }
     },[walletConnected]);
